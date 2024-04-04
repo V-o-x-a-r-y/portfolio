@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <style>
+        /* Styles CSS sont ici */
+        body{font-family:Arial,sans-serif;margin:0;padding:0}header{background-color:#333;color:#fff;padding:20px;text-align:center}#projects{padding:20px}.modal{display:none;position:fixed;z-index:1;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,.4)}.modal-content{background-color:#fefefe;margin:15% auto;padding:20px;border:1px solid #888;width:50%}.close{color:#aaa;float:right;font-size:28px;font-weight:bold}.close:hover,.close:focus{color:black;text-decoration:none;cursor:pointer}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mon Portfolio</h1>
+        <button id="authBtn">Connexion</button>
+    </header>
+
+    <section id="projects"></section>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Authentification</h2>
+            <form id="authForm">
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password">
+                <button type="submit">Connexion</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ajouter un nouveau projet</h2>
+            <form id="projectForm">
+                <label for="projectName">Nom du projet:</label>
+                <input type="text" id="projectName" name="projectName">
+                <label for="projectDescription">Description:</label>
+                <textarea id="projectDescription" name="projectDescription"></textarea>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Code JavaScript est ici (obfusqué)
+        (function(){var e=document.getElementById("authBtn"),t=document.getElementById("authModal"),n=document.querySelector(".close"),o=document.getElementById("authForm"),d=document.getElementById("projects"),s=document.getElementById("projectModal"),a=document.querySelector("#projectModal .close"),r=document.getElementById("projectForm");e.addEventListener("click",function(){t.style.display="block"}),n.addEventListener("click",function(){t.style.display="none"}),window.addEventListener("click",function(e){e.target==t&&(t.style.display="none")}),o.addEventListener("submit",function(e){e.preventDefault();var n=document.getElementById("username").value,o=document.getElementById("password").value;"admin"===n&&"password"===o?(t.style.display="none",e.currentTarget.reset(),r.addEventListener("submit",function(e){e.preventDefault();var t=document.getElementById("projectName").value,n=document.getElementById("projectDescription").value;if(""!==t.trim()&&""!==n.trim()){var o=document.createElement("div");o.classList.add("project-item"),o.innerHTML="<h3>"+t+"</h3><p>"+n+"</p>",d.appendChild(o),s.style.display="none",r.reset()}})):(alert("Identifiants incorrects"),t.style.display="none",o.reset())})})();
+    </script>
+</body>
+</html>
